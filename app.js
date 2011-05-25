@@ -7,6 +7,20 @@ var express = require('express');
 
 var app = module.exports = express.createServer();
 
+var INFO = 0
+  , WARN = 1
+  , ERROR = 2;
+
+var options = {
+   logLevel: WARN
+};
+
+var l = function(obj, level){
+   if( level >= options['logLevel'] ){
+      console.log(obj);
+   };
+};
+
 // Configuration
 
 app.configure(function(){
@@ -26,12 +40,21 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
+var Models = require('./models');
+
 // Routes
 
 app.get('/', function(req, res){
   res.render('index', {
     title: 'Express'
   });
+});
+
+
+app.post('/logs/new', function(req, res){
+   res.render('index', {
+      title: 'Logger'
+   });
 });
 
 // Only listen on $ node app.js

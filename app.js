@@ -41,6 +41,7 @@ app.configure('production', function(){
 });
 
 var Models = require('./models');
+var Log = Models.Log;
 
 // Routes
 
@@ -50,6 +51,14 @@ app.get('/', function(req, res){
   });
 });
 
+app.get('/logs', function(req,res){
+   var logs = Log.find({}, function(err, results){
+      res.render('logs/index',{
+         title: 'Recent Logs',
+         logs: results
+      });
+   });
+});
 
 app.post('/logs/new', function(req, res){
    res.render('index', {

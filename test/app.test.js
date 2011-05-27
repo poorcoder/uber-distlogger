@@ -1,4 +1,3 @@
-
 // Run $ expresso
 
 /**
@@ -43,7 +42,7 @@ module.exports = {
         )
       },
       {},
-         function(res){
+         function(){
             Log.findOne({
                time: 1306469069405,
                level: 'WARN',
@@ -75,7 +74,7 @@ module.exports = {
         )
       },
       {},
-         function(res){
+         function(){
             Log.findOne({
                time: 1306469031801,
                level: 'INFO',
@@ -107,7 +106,7 @@ module.exports = {
         )
       },
       {},
-         function(res){
+         function(){
             Log.findOne({
                time: 1306469804010,
                level: 'ERROR',

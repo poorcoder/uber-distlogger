@@ -21,6 +21,8 @@ var l = function(obj, level){
    };
 };
 
+require('./utils.js');
+
 // Configuration
 
 app.configure(function(){
@@ -61,6 +63,13 @@ app.get('/logs', function(req,res){
 });
 
 app.post('/logs/new', function(req, res){
+   var log = new Log();
+   merge(log, req.body);
+   log.save(function(err){
+      if(err){
+        console.log("ERROR: " + err); 
+      }
+   });
    res.render('index', {
       title: 'Logger'
    });

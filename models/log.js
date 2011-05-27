@@ -1,9 +1,10 @@
 var LogModel = new Schema({
-   id: ObjectId,
+   time: Number,
    level: String,
-   ip: String,
-   component: String,
-   stacktrace: String
+   ip:    String,
+   line_num: String,
+   body: String,
+   component: String
 });
 
 var Log = mongoose.model('Log', LogModel);

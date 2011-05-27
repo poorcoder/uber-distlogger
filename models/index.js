@@ -2,7 +2,7 @@
 mongoose = require('mongoose');
 Schema = mongoose.Schema
   , ObjectId = Schema.ObjectId;
-mongoose.connect('mongodb://localhost/data/');
+mongoose.connect('mongodb://localhost/test/');
 
 var Model = {};
 Model.Log = require('./log.js');

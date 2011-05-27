@@ -1,12 +1,14 @@
 var LogModel = new Schema({
    time: Number,
-   level: String,
+   level: {type: String, index: true},
    ip:    String,
    line_num: String,
    body: String,
-   component: String
+   component: {type: String, index: true },
+   dispatched: Boolean
 });
 
 var Log = mongoose.model('Log', LogModel);
+Log.remove();
 
 module.exports = Log;

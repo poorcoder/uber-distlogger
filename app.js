@@ -68,10 +68,11 @@ app.post('/logs/new', function(req, res){
    log.save(function(err){
       if(err){
         console.log("ERROR: " + err); 
+      } else{ 
+         res.render('index', {
+            title: 'Logger'
+         });
       }
-   });
-   res.render('index', {
-      title: 'Logger'
    });
 });
 

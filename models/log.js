@@ -9,6 +9,6 @@ var LogModel = new Schema({
 });
 
 var Log = mongoose.model('Log', LogModel);
-Log.remove();
+Log.remove(); //Only for testing purposes, remove for production
 
 module.exports = Log;

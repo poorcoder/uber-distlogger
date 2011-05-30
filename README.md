@@ -45,7 +45,7 @@ Also, since mongo is the database back-end, you can pretty much send anything, b
                 component: 'mobile'
             }
         )
-   }
+    }
 
 You can also send multiple logs with one payload by making data json array of error messages
 

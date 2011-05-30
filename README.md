@@ -1,8 +1,21 @@
 # Logger
 This logger is built to aggregate all logs from multiple server to have a centralized list of wtf is going on
 
-## Adding new longs
-New logs need to be posted to the url `http://logger/posts/new` with a `Content-Type: applications/json` http header.
+## Viewing logs
+(todo) View logs at `http://logger/`, there will be a human readable list of logs with a searchable form
+
+### Following logs
+Logs will be written to file in human readable format so you can tail/watch/grep the file on the logging server
+#### All logs
+`http://logger/log`
+#### Mobile
+`http://logger/log.mobile`
+#### Dispatch
+`http://logger/log.dispatch`
+
+## Adding new logs
+Post your log message to the url `http://logger/logs/new` 
+For right now it needs a `Content-Type: applications/json` http header.
 
 ### Model definition
     {
@@ -12,7 +25,7 @@ New logs need to be posted to the url `http://logger/posts/new` with a `Content-
       line_num: String,                                     // (opt) Line number related to the error/warning/info 
       body: String,                                         // (opt) Any additional information to send with the error (i.e. a stacktrace, detailed error message)
       component: type: String,                              // (req) System that the log message belongs too `['mobile', 'dispatch', 'etc']`
-   }
+    }
 
 ### Example POST request
     { url: '/logs/new' ,

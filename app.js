@@ -81,9 +81,15 @@ rules.seed();
 populateTestData(Log);
 
 var dispatchMail = function(Log){
-   Log.find({ level: 'WARN' }, function(err, docs){
-      console.log(docs);
-   });
+   for( var engineerIndex in rules.engineers){
+      var engineer = rules.engineers[engineerIndex];
+      Log.find(engineer.filter, function(err, docs){
+         if(docs == null){       // maybe undefined and [] could work here, need to lookup def
+            console.log(docs);
+            l("No needed dispatching for engineer: " + ,INFO);
+         }
+      });
+   }
 };
 
 var t = setInterval(dispatchMail, 3000, Log);

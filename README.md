@@ -28,7 +28,7 @@ Also, since mongo is the database back-end, you can pretty much send anything, b
       ip:    String,                                        // (req) Source IP Address of the log message 
       line_num: String,                                     // (opt) Line number related to the error/warning/info 
       body: String,                                         // (opt) Any additional information to send with the error (i.e. a stacktrace, detailed error message)
-      component: type: String,                              // (req) System that the log message belongs too `['mobile', 'dispatch', 'etc']`
+      component: String,                                    // (req) System that the log message belongs too `['mobile', 'dispatch', 'etc']`
     }
 
 ### Example POST request

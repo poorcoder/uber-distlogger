@@ -79,4 +79,4 @@ You can also send multiple logs with one payload by making data json array of lo
 ## Future thoughts
    
    Tie the logging system with an automated ticket system if there isn't one with an API to tie into. Potentially develop a google chrome extension to act as a ticket system within uber cab's gmail.
-[Here's a mockup of the potential idea](http://i.imgur.com/c4Hu9.png)
+[Here's a mockup of the potential idea](http://i.imgur.com/3IWk6.png)

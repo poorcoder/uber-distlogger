@@ -5,7 +5,7 @@ This logger is built to aggregate all logs from multiple server to have a centra
 View logs at `http://logger/`, a webpage with a human readable list of logs with a searchable form
 
 ### Following logs
-Logs will be written to file in human readable format so you can tail/watch/grep the file on the logging server
+Logs are written to file in human readable format so you can tail/watch/grep the file on the logging server
 #### All logs
 `http://logger/log`
 #### Mobile

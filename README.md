@@ -1,6 +1,18 @@
 # Logger
 This logger is built to aggregate all logs from multiple server to have a centralized list of wtf is going on
 
+## (TODO) Viewing logs
+View logs at `http://logger/`, a webpage with a human readable list of logs with a searchable form
+
+### (TODO) Following logs
+Logs will be written to file in human readable format so you can tail/watch/grep the file on the logging server
+#### All logs
+`http://logger/log`
+#### Mobile
+`http://logger/log.mobile`
+#### Dispatch
+`http://logger/log.dispatch`
+
 ## (DONE) Adding new logs
 Post your log message to the url `http://logger/logs/new` 
 For right now it needs a `Content-Type: applications/json` http header.
@@ -36,19 +48,6 @@ Also, since mongo is the database back-end, you can pretty much send anything, b
     }
 
 You can also send multiple logs with one payload by making data json array of log messages
-
-## (TODO) Viewing logs
-View logs at `http://logger/`, a webpage with a human readable list of logs with a searchable form
-
-### (TODO) Following logs
-Logs will be written to file in human readable format so you can tail/watch/grep the file on the logging server
-#### All logs
-`http://logger/log`
-#### Mobile
-`http://logger/log.mobile`
-#### Dispatch
-`http://logger/log.dispatch`
-
 
 ## (WIP) Logger ticket creation
    Logger will monitor the incoming logs to notice if any dangerous error messages get sent and automatically notify the engineer that owns that department.

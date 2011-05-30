@@ -5,7 +5,7 @@ This logger is built to aggregate all logs from multiple server to have a centra
 New logs need to be posted to the url `http://logger/posts/new` with a `Content-Type: applications/json` http header.
 
 ### Model definition
-   {
+    {
       time: Number,                                         // (req) Contains the time in milliseconds since 1970 of the log message
       level: String,                                        // (req) Level of the log message `['WARN', 'LOG', 'ERROR']`
       ip:    String,                                        // (req) Source IP Address of the log message 

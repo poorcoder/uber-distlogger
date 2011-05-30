@@ -12,7 +12,7 @@ var INFO = 0
   , ERROR = 2;
 
 var options = {
-   logLevel: WARN
+   logLevel: INFO
 };
 
 var l = function(obj, level){
@@ -81,13 +81,17 @@ rules.seed();
 populateTestData(Log);
 
 var dispatchMail = function(Log){
+   console.log("Processing dispatch queue");
    for( var engineerIndex in rules.engineers){
       var engineer = rules.engineers[engineerIndex];
       Log.find(engineer.filter, function(err, docs){
+
+      //   console.log(docs);
          if(docs == null){       // maybe undefined and [] could work here, need to lookup def
-            console.log(docs);
-            l("No needed dispatching for engineer: " + ,INFO);
-         }
+            //l("No needed dispatching for engineer: " + INFO);
+         } else {
+            //l("Needed to dispach: " + docs, INFO);
+         };
       });
    }
 };

@@ -1,10 +1,10 @@
 # Logger
 This logger is built to aggregate all logs from multiple server to have a centralized list of wtf is going on
 
-## (TODO) Viewing logs
+## Viewing logs
 View logs at `http://logger/`, a webpage with a human readable list of logs with a searchable form
 
-### (TODO) Following logs
+### Following logs
 Logs will be written to file in human readable format so you can tail/watch/grep the file on the logging server
 #### All logs
 `http://logger/log`

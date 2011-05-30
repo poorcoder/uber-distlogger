@@ -72,6 +72,5 @@ You can also send multiple logs with one payload by making data json array of lo
         filter: {                                                                                    
            level: 'ERROR',                                                                  
            component: 'dispatch'                                                           
-           level: 'ERROR',                                                                      
         }
     }

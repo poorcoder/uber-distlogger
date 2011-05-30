@@ -40,7 +40,7 @@ Also, since mongo is the database back-end, you can pretty much send anything, b
                 time: 1306469069405,
                 level: 'WARN',
                 ip: '127.0.0.1',
-                line_num: 'dispatch_server.js:228:2',
+                line_num: 'NSCreditCardController.m:1337',
                 body: 'Permission to API call denied',
                 component: 'mobile'
             }

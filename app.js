@@ -76,6 +76,18 @@ app.post('/logs/new', function(req, res){
    });
 });
 
+var rules = require('./rules');
+rules.seed();
+populateTestData(Log);
+
+var dispatchMail = function(Log){
+   Log.find({ level: 'WARN' }, function(err, docs){
+      console.log(docs);
+   });
+};
+
+var t = setInterval(dispatchMail, 3000, Log);
+
 // Only listen on $ node app.js
 if (!module.parent) {
   app.listen(3000);

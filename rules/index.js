@@ -1,23 +1,33 @@
-module.exports = [
-   {
-      email: 'kiran.ryali@gmail.com', 
-      filter: {
-         level: 'WARN',
-         component: 'mobile'
-      }
+module.exports = {
+
+   engineers: [
+   ],
+
+   addEngineer: function( email, filter ){
+      this.engineers.push({ email: email, filter: filter });
    },
-   {
-      email: 'engineer2@uber.com', 
-      filter: {
-         level: 'ERROR',
-         component: 'dispatch'
-      }
-   },
-   {
-      email: 'enginee32@uber.com', 
-      filter: {
-         level: 'ERROR',
-         component: 'other'
-      }
-   },
-];
+
+   seed: function(){
+      this.addEngineer(
+         'kiran.ryali@gmail.com', 
+         {
+            level: 'WARN',
+            component: 'mobile'
+         }
+      );
+      this.addEngineer(
+         'engineer2@uber.com', 
+         {
+            level: 'ERROR',
+            component: 'dispatch'
+         }
+      );
+      this.addEngineer(
+         'enginee32@uber.com', 
+         {
+            level: 'ERROR',
+            component: 'other'
+         }
+      );
+   }
+}

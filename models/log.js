@@ -5,7 +5,7 @@ var LogModel = new Schema({
    line_num: String,
    body: String,
    component: {type: String, index: true },
-   dispatched: Boolean
+   dispatched: {type:Boolean, default:false}
 });
 
 var Log = mongoose.model('Log', LogModel);

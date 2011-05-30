@@ -57,8 +57,11 @@ You can also send multiple logs with one payload by making data json array of er
 
 ### How it works
    Engineers are saved in the database as a json object with an `email` and `filter` (Still working on the schema design, will definitely change)
+
    `email` - engineer's notifaction email
+
    `filter` - criteria to match against log messages
+
 
    Every 30s, logger will query the database for anything that matches the engineers criteria that hasn't been dispatched. If any is found, logger will create a ticket and notify the engineer 
 

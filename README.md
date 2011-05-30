@@ -50,20 +50,21 @@ Also, since mongo is the database back-end, you can pretty much send anything, b
 You can also send multiple logs with one payload by making data json array of log messages
 
 ## (WIP) Logger ticket creation
-   Logger will monitor the incoming logs to notice if any dangerous error messages get sent and automatically notify the engineer that owns that department.
+   Logger will monitor the incoming logs to for dangerous error logs. If found, logger will automatically notify the engineer that owns that piece of the code.
+
    For example, if the iphone app experiences a critical error, the mobile engineer will be emailed with the log of the error message and a ticket for the error will be created.
 
    `NOTE: Temporarily in memory, will move to mongo soon.`
 
 ### How it works
+   Every 30s, logger will query the database for anything that matches the engineers criteria that hasn't been dispatched. If any is found, logger will create a ticket and notify the engineer 
+
    Engineers are saved in the database as a json object with an `email` and `filter` (Still working on the schema design, will definitely change)
 
-   `email` - engineer's notifaction email
+   `email` - engineer's notification email
 
    `filter` - criteria to match against log messages
 
-
-   Every 30s, logger will query the database for anything that matches the engineers criteria that hasn't been dispatched. If any is found, logger will create a ticket and notify the engineer 
 
 #### Example engineer object
     {                                                                         

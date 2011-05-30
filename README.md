@@ -15,17 +15,17 @@ New logs need to be posted to the url `http://logger/posts/new` with a `Content-
    }
 
 ### Example POST request
-   { url: '/logs/new' ,
-     method: 'POST', 
-     headers: { 'Content-Type' : 'application/json' },
-     data: JSON.stringify(
-        {
-         time: 1306469069405,
-         level: 'WARN',
-         ip: '127.0.0.1',
-         line_num: 'dispatch_server.js:228:2',
-         body: 'Permission to API call denied',
-         component: 'mobile'
-        }
-     )
+    { url: '/logs/new' ,
+        method: 'POST', 
+        headers: { 'Content-Type' : 'application/json' },
+        data: JSON.stringify(
+            {
+                time: 1306469069405,
+                level: 'WARN',
+                ip: '127.0.0.1',
+                line_num: 'dispatch_server.js:228:2',
+                body: 'Permission to API call denied',
+                component: 'mobile'
+            }
+        )
    }

@@ -24,7 +24,7 @@ Also, since mongo is the database back-end, you can pretty much send anything, b
 ### Model definition
     {
       time: Number,                                         // (req) Contains the time in milliseconds since 1970 of the log message
-      level: String,                                        // (req) Level of the log message `['WARN', 'LOG', 'ERROR']`
+      level: String,                                        // (req) Level of the log message `['WARN', 'INFO', 'ERROR']`
       ip:    String,                                        // (req) Source IP Address of the log message 
       line_num: String,                                     // (opt) Line number related to the error/warning/info 
       body: String,                                         // (opt) Any additional information to send with the error (i.e. a stacktrace, detailed error message)

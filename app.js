@@ -84,11 +84,14 @@ var dispatchMail = function(Log){
    console.log("Processing dispatch queue");
    for( var engineerIndex in rules.engineers){
       var engineer = rules.engineers[engineerIndex];
+      console.log(engineer);
       Log.find(engineer.filter, function(err, docs){
          // console.log(docs);
-         if(docs == null){       // maybe undefined and [] could work here, need to lookup def
+         if(docs == []){
+            console.log("No dispatch");
          // l("No needed dispatching for engineer: " + INFO);
          } else {
+            console.log("dispatch " + docs);
          // l("Needed to dispach: " + docs, INFO);
          };
       });

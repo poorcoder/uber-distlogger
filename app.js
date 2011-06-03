@@ -84,15 +84,13 @@ var dispatchMail = function(Log){
    console.log("Processing dispatch queue");
    for( var engineerIndex in rules.engineers){
       var engineer = rules.engineers[engineerIndex];
-      console.log(engineer);
-      Log.find(engineer.filter, function(err, docs){
-         // console.log(docs);
-         if(docs == []){
-            console.log("No dispatch");
-         // l("No needed dispatching for engineer: " + INFO);
+      Log.find({}, function(err, docs){
+         console.log(docs.length);
+         if(docs.length < 1){
+               // No documents found for engineer
          } else {
-            console.log("dispatch " + docs);
-         // l("Needed to dispach: " + docs, INFO);
+              console.log("dispatch " + docs);
+//            l("Needed to dispach: " + docs, INFO);
          };
       });
    }

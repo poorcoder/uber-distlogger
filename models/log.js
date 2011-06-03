@@ -9,6 +9,14 @@ var LogModel = new Schema({
 });
 
 var Log = mongoose.model('Log', LogModel);
+Log.prototype.toString = function(){
+   s = "";
+   for( var v in this['doc'] ){
+      if( v != '_id')
+         s += v + ": " + this['doc'][v] + " ";
+   };
+   return s;
+}
 Log.remove(); //Only for testing purposes, remove for production
 
 module.exports = Log;

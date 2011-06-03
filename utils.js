@@ -35,5 +35,5 @@ populateTestData = function(Log){
    log.save( function(err) {
       console.log("Log3 added");
    });
-   console.log('Adding test data');
+   console.log(log.toString());
 };

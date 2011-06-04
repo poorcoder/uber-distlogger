@@ -120,5 +120,73 @@ module.exports = {
             });
          }
       );
+  },
+  'MOBILE_WRITE': function(){
+      assert.response(app,
+      { url: '/logs/new' ,
+        method: 'POST', 
+        headers: { 'Content-Type' : 'application/json' },
+        data: JSON.stringify(
+           {
+            time: 1306448018101,
+            level: 'WARN',
+            ip: '19.191.103.1',
+            line_num: 'http_client.js:159:20',
+            body: 'written as a test',
+            component: 'dispatch'
+           }
+        )
+      },
+      {},
+         function(){
+            Log.findOne({
+               time: 1306448018101,
+               level: 'WARN',
+               ip: '19.191.103.1',
+               line_num: 'http_client.js:159:20',
+               body: 'written as a test',
+               component: 'dispatch'
+               }, 
+               function(err, docs){
+                  assert.isNotNull(docs, "ERROR DISPATCH");
+            });
+         }
+      );
+  },
+  'UPDATE' : function(){
+      assert.response(app,
+      { url: '/logs/new' ,
+        method: 'POST', 
+        headers: { 'Content-Type' : 'application/json' },
+        data: JSON.stringify(
+           {
+            time: 1302913999000,
+            level: 'ERROR',
+            ip: '39.191.103.1',
+            line_num: 'tcp.stuff.js:159:20',
+            body: 'this is just anoher log',
+            component: 'mobile'
+           }
+        )
+      },
+      {},
+         function(){
+            Log.findOne({
+               time: 1302913999000,
+               level: 'ERROR',
+               ip: '39.191.103.1',
+               line_num: 'tcp.stuff.js:159:20',
+               body: 'this is just anoher log',
+               component: 'mobile'
+               }, 
+               function(err, docs){
+                  docs.component = 'dispatch';
+                  docs.save(function(err){
+                     assert.isNull(err);
+                  });
+               }
+            );
+         }
+      );
   }
 };

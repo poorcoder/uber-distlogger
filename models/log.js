@@ -1,5 +1,5 @@
 var LogModel = new Schema({
-   time: Number,
+   time: Date,
    level: {type: String, index: true},
    ip:    String,
    line_num: String,
@@ -10,13 +10,13 @@ var LogModel = new Schema({
 
 var Log = mongoose.model('Log', LogModel);
 Log.prototype.toString = function(){
+   var log = this['doc'];
    s = "";
-   for( var v in this['doc'] ){
-      if( v != '_id')
-         s += v + ": " + this['doc'][v] + " ";
+   for( var label in log ){
+      if( label != '_id')
+         s += label + ": " + log[label] + " ";
    };
    return s;
 }
-Log.remove(); //Only for testing purposes, remove for production
 
 module.exports = Log;

@@ -45,6 +45,10 @@ app.configure('production', function(){
 var Models = require('./models');
 var Log = Models.Log;
 
+if( !Log ){
+   l("Error creating Log model", ERROR);
+};
+
 // Routes
 
 app.get('/', function(req, res){
@@ -84,13 +88,17 @@ var dispatchMail = function(Log){
    console.log("Processing dispatch queue");
    for( var engineerIndex in rules.engineers){
       var engineer = rules.engineers[engineerIndex];
-      Log.find({}, function(err, docs){
-         console.log(docs.length);
+      merge(engineer.filter, {dispatched: false});
+      Log.find(engineer.filter, function(err, docs){
          if(docs.length < 1){
-               // No documents found for engineer
+            // No documents found for engineer
          } else {
-              console.log("dispatch " + docs);
-//            l("Needed to dispach: " + docs, INFO);
+            for( var docIndex in docs ){
+               docs[docIndex].dispatched = true;
+               docs[docIndex].save();
+               console.log(docs[docIndex].toString());
+            }
+//            l("Needed to dispach " + docs[0] + "logs", INFO);
          };
       });
    }

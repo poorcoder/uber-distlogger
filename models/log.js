@@ -9,9 +9,20 @@ fs.open(log_dir + "/all", 'a+', function(err, fd){
 });
 
 
-var writeQueue = {
-   push: function(){
-
+var write_queue = {
+   data: [],
+   push: function(obj){
+      this.data.push(obj);
+   },
+   pop: function(){
+      if(this.data.length > 0){
+         var obj = this.data[0];
+         this.data = this.data.splice(1, this.data.length);
+         return obj;
+      }
+   },
+   size: function(){
+      return this.data.length;
    }
 };
 
@@ -43,7 +54,7 @@ Log.prototype.toString = function(){
    return s;
 }
 
-Log.prototype.fs_write(){
+var flush_queue = function(){
    var log = this['doc'];
    var log_string = this.toString();
 
@@ -59,5 +70,13 @@ Log.prototype.fs_write(){
    }
 
 };
+
+write_queue.push('Hello');
+write_queue.push('World');
+write_queue.push('YEEEE');
+write_queue.pop();
+console.log(write_queue.size());
+console.log(write_queue.data[0]);
+console.log(write_queue.data[1]);
 
 module.exports = Log;

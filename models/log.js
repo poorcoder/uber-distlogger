@@ -1,6 +1,10 @@
+//TODO: refactor & document this pos
+
 var fs = require('fs');
 
 var log_dir = '../logs';
+
+var files = {};
 
 var fs_all;
 
@@ -26,7 +30,34 @@ var write_queue = {
    }
 };
 
-var files = {};
+var file_append = function(fd, string){
+   fs.write(fd, string, 0, string.length, null);
+};
+
+var flush_queue = function(){
+   while(write_queue.size() > 0){
+
+      var task = write_queue.pop();
+
+      var component = task['component'];
+      var log_string = task['data'];
+
+      file_append(fs_all, log_string);
+
+      if( files[component] == undefined){
+         fs.open(log_dir + '/' + component,  'a+', function(err,fd){
+            files[component] = fd;
+            append(files[component], log_string); 
+         });
+      } else {
+         append(files[log.component], log_string); 
+      }
+
+   };
+
+};
+
+
 
 var LogModel = new Schema({
    time: Date,
@@ -40,9 +71,6 @@ var LogModel = new Schema({
 
 var Log = mongoose.model('Log', LogModel);
 
-var file_append = function(fd, string){
-   fs.write(fd, string, 0, string.length, null);
-};
 
 Log.prototype.toString = function(){
    var log = this['doc'];
@@ -52,31 +80,12 @@ Log.prototype.toString = function(){
          s += label + ": " + log[label] + " ";
    };
    return s;
-}
-
-var flush_queue = function(){
-   var log = this['doc'];
-   var log_string = this.toString();
-
-   file_append(fs_write, log_string);
-
-   if( files[log.component] == undefined){
-      fs.open(log_dir + '/' + log.component,  'a+', function(err,fd){
-         files[log.component] = fd;
-         append(files[log.component], log_string); 
-      });
-   } else {
-      append(files[log.component], log_string); 
-   }
-
 };
 
-write_queue.push('Hello');
-write_queue.push('World');
-write_queue.push('YEEEE');
-write_queue.pop();
-console.log(write_queue.size());
-console.log(write_queue.data[0]);
-console.log(write_queue.data[1]);
+Log.prototype.toFile = function(){
+   write_queue.push({component: this['doc'].component, data: this.toString()});
+   flush_queue();
+};
+
 
 module.exports = Log;

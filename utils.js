@@ -52,12 +52,15 @@ populateTestData = function(Log){
          added = false;
    });
 
+   log.toFile();
+
    if( added ){
       console.log('Dummy logs added.');
    } else {
       console.log('Error in adding dummy logs');
    }
-   
+
+
    Log.find({}, function(err, docs){
       if( docs.length < 1)
          console.log("We didn't find anything :(");

@@ -50,7 +50,7 @@ var flush_queue = function(){
             append(files[component], log_string); 
          });
       } else {
-         append(files[log.component], log_string); 
+         append(files[component], log_string); 
       }
 
    };
@@ -83,8 +83,13 @@ Log.prototype.toString = function(){
 };
 
 Log.prototype.toFile = function(){
-   write_queue.push({component: this['doc'].component, data: this.toString()});
-   flush_queue();
+   try{
+      write_queue.push({component: this['doc'].component, data: this.toString()});
+      flush_queue();
+   } catch ( e ){
+      console.log("ERROR");
+      console.log(e);
+   }
 };
 
 
